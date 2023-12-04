@@ -404,6 +404,7 @@ int32_t parse_options(char *miscptr, ptr_header_node *ptr_head) {
       hydra_report(stderr, "[ERROR] optional parameters must have the format X=value: %s\n", miscptr);
       return 0;
     }
+    char *tmp;
     switch (miscptr[0]) {
     case 'a': // fall through
     case 'A': // only for http, not http-form!
@@ -440,7 +441,7 @@ int32_t parse_options(char *miscptr, ptr_header_node *ptr_head) {
       break;
     case '1':
       code_401_is_failure = 1;
-      char *tmp = strchr(miscptr, ':');
+      tmp = strchr(miscptr, ':');
       if (tmp)
         miscptr = tmp + 1;
       else
@@ -448,7 +449,7 @@ int32_t parse_options(char *miscptr, ptr_header_node *ptr_head) {
       break;
     case '2':
       code_302_is_success = 1;
-      char *tmp = strchr(miscptr, ':');
+      tmp = strchr(miscptr, ':');
       if (tmp)
         miscptr = tmp + 1;
       else
